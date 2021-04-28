@@ -8,6 +8,11 @@
     <title>Document</title>
 </head>
 <body>
+
+    <nav class="navbar navbar-expand-lg navbar-light text-dark bg-light shadow">
+            <img src="<?php echo base_url("/icons/CRUD.svg");?>" height="50px" width="50px" alt="">
+    <a class="navbar-brand text-primary ml-2 font-weight-light" href="#">CRUD Application in Codeigniter</a> 
+    </nav>
    <h1 class="text-center">Edit</h1> 
 
 

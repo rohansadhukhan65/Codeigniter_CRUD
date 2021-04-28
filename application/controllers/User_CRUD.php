@@ -1,10 +1,22 @@
 <?php 
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 class User_CRUD extends CI_Controller{
     
     function index()
-    {
-        $this->load->view('list');
+    {   
+        // loading user model
+        $this->load->model('User_model');
+
+        // fetch all user data
+        $users = $this->User_model->all();
+
+        // create user context and pass it
+        $context = array();
+        $context['user'] = $users;
+
+
+        $this->load->view('list',$context);
     }
 
 
@@ -17,10 +29,14 @@ class User_CRUD extends CI_Controller{
         $this->form_validation->set_rules('name', 'Name', 'required');
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
 
+        
         // Validation Chek
         if($this->form_validation->run() == false)
         {
             $this->load->view('create');
+
+            // creatijng success session messege 
+            $this->session->set_flashdata('success', 0);
         } 
         else 
         {
@@ -44,6 +60,12 @@ class User_CRUD extends CI_Controller{
     function edit()
     {
         $this->load->view('edit');
+    }
+
+
+    function delete()
+    {
+
     }
     
 }
