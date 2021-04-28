@@ -17,6 +17,9 @@ class User_CRUD extends CI_Controller{
 
 
         $this->load->view('list',$context);
+
+        // clearning success session messege 
+        $this->session->set_flashdata('success_edit', "");
     }
 
 
@@ -57,14 +60,62 @@ class User_CRUD extends CI_Controller{
         }
     }
 
-    function edit()
-    {
-        $this->load->view('edit');
+    function edit($userId)
+    {   
+        // loading model
+        $this->load->model('User_model');
+
+        // getting perticular
+        $user_edit = $this->User_model->getaUser($userId);
+
+        //passing that data to context for view
+        $context_edit = array();
+        $context_edit['user_edit'] = $user_edit; 
+
+
+        // Form Validate
+        $this->form_validation->set_rules('name', 'Name', 'required');
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+
+        if($this->form_validation->run() == false)
+        {
+            $this->load->view('edit',$context_edit);
+        }
+        else
+        {
+            //Update User
+            $formarray = array();
+            $formarray['name'] = $this->input->post('name');
+            $formarray['email'] = $this->input->post('email');
+            $formarray['create_at'] = date('Y-m-d');
+            $this->User_model->UpdateUser($formarray,$userId);
+
+
+            // creatijng success session messege 
+            $this->session->set_flashdata('success_edit', "Update Complete !");
+
+
+            // redirecting
+            redirect(base_url().'/');
+        }
+
+
     }
 
 
-    function delete()
+    function delete($userids)
     {
+        // loading model
+        $this->load->model('User_model');
+
+        // Delete the perticular user
+        $this->User_model->DeleteUser($userids);
+
+        // creatijng success session messege 
+        $this->session->set_flashdata('success_edit', "User Deleted !");
+
+        // redirecting
+        redirect(base_url().'/');
 
     }
     

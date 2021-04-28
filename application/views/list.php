@@ -19,7 +19,13 @@
     <a class="navbar-brand text-primary ml-2 font-weight-light" href="#">CRUD Application in Codeigniter</a> 
     </nav>
 
-
+ <?php 
+    $msg = $this->session->flashdata('success_edit'); 
+    if ($msg != "" ) {?>
+   <div class="alert alert-success text-center " role="alert">
+    <span class="font-weight-bold"><?php echo $msg?> </span>   
+</div>
+<?php }?>
    <h1 class="text-center mt-3 font-weight-light text-primary">View Users</h1> 
 
     
