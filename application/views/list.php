@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="<?php echo base_url("/icons/CRUD.svg");?>" type="image/x-icon">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <title>Document</title>
+    <title>CRUD CI - List Data</title>
 
     <style>
         *{
@@ -38,7 +39,7 @@
     </div>
 
 
-<table class="table">
+<table class="table text-center">
   <thead class="thead bg-primary shadow text-light">
     <tr>
       <th scope="col">#</th>
@@ -67,7 +68,7 @@
     <?php }}  else { ?>
 
         <tr>
-            <td colspan="5" class="text-center text-danger font-weight-light"> <h3 class="font-weight-light mt-5">No Records found !</h3> </td>
+            <td colspan="4" class="text-center text-danger font-weight-light"> <h3 class="font-weight-light mt-5">No Records found !</h3> </td>
         </tr>
     <?php }?>
    <tr></tr>
